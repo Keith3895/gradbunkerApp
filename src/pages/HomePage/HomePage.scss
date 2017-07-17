@@ -1,4 +1,4 @@
-page-item-details {
+page-home-page {
 	.border{
 		border: 1px solid #32db64;
 		margin: 5px;
@@ -18,4 +18,12 @@ page-item-details {
 	.content{
 		color: black;
 	}
+}
+
+.home .toolbar-background {
+  background-color: #ee6e73;
+
+}
+.home div,a{
+	color: white;
 }

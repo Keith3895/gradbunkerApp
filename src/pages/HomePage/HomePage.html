@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar class="home">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Grad Bunker</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3 style="text-align: center;">Welcome {{User}}</h3>
+  <ion-grid>
+  <ion-row text-center>
+    <ion-col>
+      <button ion-button round (click)="openPage('AddListingPage')">Add company</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button round (click)="openPage('ListPage')">Drive List</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button round (click)="openPage('StudentListPage')">Student List</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button round (click)="openPage('asdf')">Analysis</button>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+  
+  
+  
+  
+
+<h3>Resently added:</h3>
+<ion-slides pager>
+  
+  <ion-slide *ngFor= "let company of companys">
+    <ion-card >
+      <ion-card-content color='primary'>
+        <ion-card-title style="text-align: center;">
+          {{company.cName}}
+        </ion-card-title>
+        <div>
+          <div class="package">Package: <span class="content">{{company.Package}}</span></div>
+          <div *ngIf = 'company.jobLocation != null '><ion-icon name='flag'></ion-icon> JobLocation: <span class="content">{{company.jobLocation}}</span></div>
+          <div class='percentage-container' *ngIf=" company.tenth != null || company.twelve != null || company.engineering != null">
+            <p class="percentage">Percentage criteria</p>
+            <ion-row >
+              <ion-col *ngIf=" company.tenth !=null " class="center border"><ion-icon name='school'></ion-icon><br> thenth:<br> <span class="content">{{company.tenth}}%</span></ion-col>
+              <ion-col *ngIf=" company.twelve !=null " class="center border"> <ion-icon name='school'></ion-icon><br> twelfth: <br><span class="content">{{company.twelve}}%</span> </ion-col>
+              <ion-col *ngIf=" company.engineering !=null " class="center border"> <ion-icon name='school'></ion-icon><br> engineering:<br> <span class="content">{{company.engineering}}%</span></ion-col>
+            </ion-row>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col class="center"><ion-icon name='calendar'></ion-icon> Date:<span class="content">{{company.date}}</span></ion-col>
+              <ion-col class="center"><ion-icon name='time'></ion-icon> Time: <span class="content">{{company.time}}</span></ion-col>
+            </ion-row>        
+            <div><ion-icon name='pin'></ion-icon> Drive Location: <span class="content">{{company.driveLocation}}</span></div>
+          </div>
+          
+        </div>
+      </ion-card-content>
+
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-start>
+            <ion-icon name='brush'></ion-icon>
+            Edit
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="danger" icon-start>
+            <ion-icon name='eye'></ion-icon>
+            view
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-start>
+            <ion-icon name='trash'></ion-icon>
+            delete
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>   
+  </ion-slide>
+</ion-slides>
+
+
+
+
+
+<ion-slides pager>
+
+  <ion-slide >
+    <canvas #barCanvas col-12 class="canvas"></canvas>
+  </ion-slide>
+  <ion-slide >
+    <canvas #doughnutCanvas col-12 class="canvas"></canvas>
+  </ion-slide>
+
+  <ion-slide >
+    <canvas #lineCanvas col-12 class="canvas"></canvas>
+  </ion-slide>
+  <ion-slide >
+    <canvas #polarCanvas col-12 class="canvas"></canvas>
+  </ion-slide>
+  <ion-slide >
+    <canvas #radarCanvas col-12 class="canvas"></canvas>
+  </ion-slide>
+</ion-slides>
+
+
+
+</ion-content>

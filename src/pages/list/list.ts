@@ -1,30 +1,49 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
-
+import { Http, Headers } from '@angular/http';
+import 'rxjs/Rx';
 import { ItemDetailsPage } from '../item-details/item-details';
+
+
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: any;
+  gotData:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http : Http) {
+    this.http.get('https://erpdontdelete-mkb95.c9users.io/placementHead/listOfdrives/list').subscribe(data => {
+         console.log("Got Data");
+         data=data.json();
+         
+         this.gotData=this.items = data ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+         
+            }, error => {
+         console.log("Error with Data");
+    });
+  }
 
-    this.items = [];
-    for(let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
+
+getItems(ev) {
+    this.initializeItems();
+    var val = ev.target.value;
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.cName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
     }
   }
+
+
+  initializeItems(){
+
+    this.items=this.gotData;
+  }
+  
+
 
   itemTapped(event, item) {
     this.navCtrl.push(ItemDetailsPage, {

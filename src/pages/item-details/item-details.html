@@ -8,11 +8,44 @@
 </ion-header>
 
 <ion-content>
-  <h3 text-center *ngIf="selectedItem">
-    {{selectedItem.title}}
-    <ion-icon [name]="selectedItem.icon"></ion-icon>
-  </h3>
-  <h4 text-center *ngIf="selectedItem">
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </h4>
+  <h1 text-center *ngIf="selectedItem">
+    {{selectedItem.cName}}
+  </h1>
+  <ion-grid>
+    <div>
+          <div text-center class="package">Package: <span class="content">{{selectedItem.Package}}</span></div>
+          <div text-center *ngIf = 'selectedItem.jobLocation != null '><ion-icon name='flag'></ion-icon> JobLocation: <span class="content">{{selectedItem.jobLocation}}</span></div>
+          <div class='percentage-container' *ngIf=" selectedItem.tenth != null || selectedItem.twelve != null || selectedItem.engineering != null">
+            <p class="percentage">Percentage criteria</p>
+            <ion-row >
+              <ion-col *ngIf=" selectedItem.tenth !=null " class="center border"><ion-icon name='school'></ion-icon><br> thenth:<br> <span class="content">{{selectedItem.tenth}}%</span></ion-col>
+              <ion-col *ngIf=" selectedItem.twelve !=null " class="center border"> <ion-icon name='school'></ion-icon><br> twelfth: <br><span class="content">{{selectedItem.twelve}}%</span> </ion-col>
+              <ion-col *ngIf=" selectedItem.engineering !=null " class="center border"> <ion-icon name='school'></ion-icon><br> engineering:<br> <span class="content">{{selectedItem.engineering}}%</span></ion-col>
+            </ion-row>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col class="center"><ion-icon name='calendar'></ion-icon> Date:<span class="content">{{selectedItem.date}}</span></ion-col>
+              <ion-col class="center"><ion-icon name='time'></ion-icon> Time: <span class="content">{{selectedItem.time}}</span></ion-col>
+            </ion-row>        
+            <div text-center><ion-icon name='pin'></ion-icon> Drive Location: <span class="content">{{selectedItem.driveLocation}}</span></div>
+          </div>
+          
+        </div>
+
+    <div text-center>
+      Departments allowed:
+      <span *ngIf="selectedItem.CIVIL"> CIVIL,</span>
+       <span *ngIf="selectedItem.CS"> CS,</span>
+       <span *ngIf="selectedItem.EC"> EC,</span>
+       <span *ngIf="selectedItem.EEE"> EEE,</span>
+       <span *ngIf="selectedItem.IS"> IS,</span>
+       <span *ngIf="selectedItem.MCA"> MCA,</span>
+       <span *ngIf="selectedItem.Mech"> Mech</span>
+    </div>  
+  </ion-grid>
+  
+
 </ion-content>
+
+

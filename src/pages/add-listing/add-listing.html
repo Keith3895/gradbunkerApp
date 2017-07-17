@@ -1,0 +1,76 @@
+<!--
+  Generated template for the AddListingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar class="listing">
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add a company listing</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form [formGroup]="addlisting" (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label floating>Company Name</ion-label>
+        <ion-input type="text" formControlName="cName" placeholder="" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Package</ion-label>
+        <ion-input type="text" formControlName="Package" placeholder="" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Job Location</ion-label>
+        <ion-input type="text" formControlName="jobLocation" placeholder="" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Drive Location</ion-label>
+        <ion-input type="text" formControlName="driveLocation" placeholder="" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Addition skills</ion-label>
+        <ion-input type="text" formControlName="skills" placeholder="java,c,c++"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Designation</ion-label>
+        <ion-input type="text" formControlName="designation" placeholder="intern,tech support..."></ion-input>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY" formControlName="date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Start Time</ion-label>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="time"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-label>Tenth percentage: {{sliderTen.value}}%</ion-label>
+        <ion-range min="0" max="100" step="5" snaps="true" color="secondary" #sliderTen formControlName='tenth'></ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label>Twelfth percentage: {{sliderTwelve.value}}%</ion-label>
+        <ion-range min="0" max="100" step="5" snaps="true" color="primary" #sliderTwelve  formControlName='twelve'></ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label>engineering percentage: {{sliderE.value}}%</ion-label>
+        <ion-range min="0" max="100" step="5" snaps="true" color="favorite" #sliderE formControlName='engg'></ion-range>
+      </ion-item>
+      <div text-center>
+        <ion-label ><h2>Departments eligible</h2></ion-label>
+        <ion-item *ngFor="let dept of departments" col-6>
+		      <ion-label>{{dept}}</ion-label>
+		      <ion-checkbox  formControlName='{{dept}}' ></ion-checkbox>
+        </ion-item>
+      </div>
+      <button ion-button type="submit" [disabled]="!addlisting.valid" >Submit</button>
+    </form>
+</ion-content>

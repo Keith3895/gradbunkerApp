@@ -1,0 +1,39 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Grad Bunker</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<h1 style="text-align: center;">Login </h1>
+<form [formGroup]="signin" (ngSubmit)="logForm()">
+<ion-list>
+
+  <ion-item>
+    <ion-label floating>Username</ion-label>
+    <ion-input type="text" formControlName = "email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<div padding>
+  <button ion-button full round [disabled]="!signin.valid">Sign in</button>
+</div>
+</form>
+
+
+
+</ion-content>

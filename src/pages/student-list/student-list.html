@@ -1,22 +1,25 @@
+<!--
+  Generated template for the StudentListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Scheduled Placement Drives </ion-title>
+    <ion-title>student-list</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content>
-<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
+
+<ion-content padding>
+<!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> -->
+<ion-list>
   <ion-item-sliding *ngFor="let item of items">
-    <button ion-item (click)="itemTapped($event, item)">
+    <button ion-item (click)="openModal($event, item)" *ngIf=" item.userType == 'student'">
       <!-- <ion-icon name="{{item.icon}}" item-left></ion-icon> -->
-      {{item.cName}}
-      <div class="item-note" item-right>
-        {{item.date}}
-      </div>
+      {{item.firstName}} {{item.lastName}}
     </button>
     <ion-item-options side="right">
       <button ion-button color="primary">
@@ -32,7 +35,3 @@
     
   </ion-list>
 </ion-content>
-
-
-
-
