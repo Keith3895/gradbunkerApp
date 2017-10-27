@@ -81,7 +81,7 @@ export class LoginPage {
   	this.navCtrl.push(HomePage);
   }
   ionViewDidLoad() {
-  	// this.navCtrl.setRoot(HomePage);
+  	this.navCtrl.setRoot(HomePage);
     console.log('ionViewDidLoad LoginPage');
   }
 

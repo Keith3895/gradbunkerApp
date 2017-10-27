@@ -1,1 +1,1 @@
-An App built for GradBunker using ionic framework.
+An App built for GradBunker using ionic framework. The app is not functional anymore due to changes made to the backend of the GradBunker website.
